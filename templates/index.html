@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TripMate AI is an intelligent travel planner that finds flights, recommends hotels, and builds complete itineraries.">
+    <title>TripMate AI | Intelligent Travel Planning</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="page-bg" aria-hidden="true">
+        <div class="gradient-circle circle-1"></div>
+        <div class="gradient-circle circle-2"></div>
+        <div class="gradient-circle circle-3"></div>
+    </div>
+
+    <main class="app-container">
+
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="badge">
+                TripMate AI &middot; Multi-Agent Travel Planner powered by LangGraph
+            </div>
+
+            <h1>Plan Your Perfect Trip with AI</h1>
+
+            <p>
+                Compare flights, discover hotels, and receive a complete,
+                day-by-day itinerary tailored to your budget and preferences.
+            </p>
+        </section>
+
+        <!-- Planner -->
+        <section class="planner-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Where would you like to go?</h2>
+                    <p>
+                        Example: Plan a 7-day trip to Japan from Bangladesh with a budget of $2,000.
+                    </p>
+                </div>
+
+                <div class="status-pill" role="status">
+                    <span class="status-dot"></span>
+                    Online
+                </div>
+            </div>
+
+            <div class="input-area">
+                <label for="userInput" class="visually-hidden">Describe your trip</label>
+                <textarea
+                    id="userInput"
+                    placeholder="Describe your trip: destination, duration, budget, flights, and hotel preferences..."
+                ></textarea>
+
+                <button id="sendBtn" type="button" onclick="sendMessage()">
+                    <span id="btnText">Generate Plan</span>
+                    <span id="btnLoader" class="loader hidden" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="quick-prompts">
+                <button type="button" onclick="setPrompt('Plan a complete 7 days Japan trip from Bangladesh including flights, hotels, and daily itinerary.')">
+                    Japan Trip
+                </button>
+
+                <button type="button" onclick="setPrompt('Plan a 5 days Dubai trip from Dhaka with flights, hotels, and daily itinerary.')">
+                    Dubai Trip
+                </button>
+
+                <button type="button" onclick="setPrompt('Plan a 7 days Thailand trip from Bangladesh with flights, hotels, and daily itinerary.')">
+                    Thailand Trip
+                </button>
+
+                <button type="button" onclick="setPrompt('Give me all country flight info.')">
+                    Global Flights
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Results -->
+        <section id="resultSection" class="result-section hidden" aria-live="polite">
+
+            <div class="result-header">
+                <div>
+                    <h2>Your Travel Plan</h2>
+                    <p id="threadInfo">Thread ID: -</p>
+                </div>
+
+                <div class="result-actions">
+                    <button type="button" class="copy-btn" onclick="copyResult()">
+                        Copy
+                    </button>
+
+                    <button type="button" class="download-btn" onclick="downloadPDF()">
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <div id="pdfContent" class="pdf-content">
+                <h1 class="pdf-title">Travel Plan</h1>
+                <div id="resultBox" class="result-box"></div>
+            </div>
+
+        </section>
+
+        <!-- Errors -->
+        <section id="errorBox" class="error-box hidden" role="alert"></section>
+
+    </main>
+
+    <footer>
+        Built with FastAPI, LangGraph, Groq, PostgreSQL, Tavily, and AviationStack
+    </footer>
+
+    <!-- Markdown Renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Application Script -->
+    <script src="/static/script.js"></script>
+
+</body>
+</html>
