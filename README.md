@@ -29,15 +29,6 @@ Quick start (Windows)
 
 1. Create and activate a virtual environment
 
-``` bash
-conda create -n travel python=3.13.11 -y
-```
-```bash
-conda activate travel 
-```
-```bash
-pip install -r requirements.txt
-```
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1    # PowerShell
